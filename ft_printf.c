@@ -1,80 +1,148 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cberneri < cberneri@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:14:37 by cberneri          #+#    #+#             */
-/*   Updated: 2023/06/22 11:17:03 by cberneri         ###   ########.fr       */
+/*   Updated: 2023/10/13 14:50:41 by cberneri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// UNDER CONSTRUCTION
+#include "ft_printf.h"
 
-
-#include <stdio.h>
-#include <stdarg.h>
-#include "../01_libft/libft.h"
-
-int	printchar(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printstr(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printptr(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printnbr(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printunsigned(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printhexadecimal(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printpercent(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	printformat(va_list args, const char format)
+int	printformat(va_list args, char format)
 {
 	int	print_length;
 
 	print_length = 0;
 	if (format == 'c')
-		print_length += printchar(va_arg(args, int));
-	else if (format == 'd' || format == 'i')
-		print_length += printnbr(va_arg(args, int));
+		print_length += ft_printchar(va_arg(args, int));
+	else if (format == 's')
+		print_length += ft_printstr(va_arg(args, char *));
+	else if (format == 'd')
+		printf("d");
+//		print_length += ft_printdigit(va_arg(args, int), 10, 0);
+	else if (format == 'i')
+		printf("TEST3");
+//		print_length += ft_printdigit(va_arg(args, int), 10, 0);
+	else if (format == 'p')
+		printf("TEST4");
+//		print_length += ft_printpointer(va_arg(args, unsigned long long));
+	else if (format == 'u')
+		printf("TEST5");
+//		print_length += ft_printdigit(va_arg(args, unsigned int), 10, 0);
+	else if (format == 'x')
+		printf("TEST6");
+//		print_length += ft_printdigit(va_arg(args, unsigned int), 16, 0);
+	else if (format == 'X')
+		printf("TEST7");
+//		print_length += ft_printdigit(va_arg(args, unsigned int), 16, 1);
+	else if (format == '%')
+		printf("TEST8");
+//		print_length += write(1, "%", 1);
+	else
+		printf("TEST9");
+//		print_length += write(1, &format, 1);
+	return (print_length);
+
+}
+
+
+
+//int ft_printf(const char *, ...);
+int ft_printf(const char *format, ...)
+{
+	va_list args;
+	int i;
+	int charactercount;
+
+	i=0;
+	charactercount = 0;
+	va_start(args, format);
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			charactercount += printformat(args, format[i + 1]);
+			i++;
+		}
+		else
+			charactercount += ft_printchar(format[i]);
+		i++;
+	}
+	va_end(args);
+	return (charactercount);
+}
+
+int main() {
+	//const char *message = "Hello12312, World!";
+	char *message = "D";
+
+	ft_printf("%c", message);
+	//printf("%c", message);
+	
+	//printf("total is: %d", ft_bzero("333"));
+
+	
+	return (0);
+
+/*
+// Test 1: Printing strings
+	char *str = "Hello, world!";
+printf("Standard printf: %s\n", str);
+ft_printf("Custom ft_printf: %s\n", str);
+
+// Test 2: Printing integers
+int num = 42;
+printf("Standard printf: %d\n", num);
+//     ft_printf("Custom ft_printf: %d\n", num);
+
+ // Test 3: Printing hexadecimal
+int hex = 0x1A3;
+printf("Standard printf: %x\n", hex);
+ft_printf("Custom ft_printf: %x\n", hex);
+
+// Test 4: Printing pointers
+void *ptr = &num;
+printf("Standard printf: %p\n", ptr);
+ft_printf("Custom ft_printf: %p\n", ptr);
+
+// Test 5: Printing a mix of formats
+int a = 10, b = 20, c = 30;
+printf("Standard printf: a=%d, b=%d, c=%d\n", a, b, c);
+ ft_printf("Custom ft_printf: a=%d, b=%d, c=%d\n", a, b, c);
+
+// Test 6: Printing nulls
+int a = 10, b = 20, c = 30;
+printf("Standard printf: a=%s, b=%p\n", (char *)NULL, NULL);
+ft_printf("Custom ft_printf: a=%d, b=%d, c=%d\n", a, b, c);
+
+*/
+}
+
+/* 
 	else if (format == 'e')
 		print_length += printeeeeeeee(va_arg(args, char *));
 	else if (format == 'E')
 		print_length += printeeeeeeee(va_arg(args, char *));
 	else if (format == 'f')
 		print_length += printFFFFFFFFF(va_arg(args, char *));
-	else if (format == 'g')
+	else if#include "libft.h"
+#include <stdarg.h>
+
+int ft_printf(const char *, ...)
+{
+
+	va_start(args, fmt);
+
+}
+
+int main(void)
+{
+	printf("total is: %d", ft_bzero("333"));
+} (format == 'g')
 		print_length += printggggggggg(va_arg(args, char *));
 	else if (format == 'G')
 		print_length += printGGGGGGGGG(va_arg(args, char *));
@@ -92,116 +160,4 @@ int	printformat(va_list args, const char format)
 		print_length += printhexadecimal(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		print_length += printpercent();
-	return (print_length);
-}
-
-
-
-//int ft_printf(const char *, ...);
-int ft_printf(const char *format, ...)
-{
-	//format is the last known parameter of the function
-	//const char *argument;
-	va_list args;
-    int i;
-	int charactercount;
-
-    int i;
-	charactercount = 0;
-	va_start(args, format);
-	//argument = va_arg(args, const char *);
-
-    while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			charactercount += printformat(args, format[i + 1]);
-			i++;
-		}
-		else
-			charactercount += ft_printchar(format[i]);
-		i++;
-	}
-	va_end(args);
-	return (charactercount);
-}
-
-int main() {
-	const char *message = "Hello12312, World!";
-	ft_printf("%s", message);
-	return 0;
-}
-
-/*
-
-#include "libft.h"
-#include <stdarg.h>
-
-int ft_printf(const char *, ...)
-{
-
-	va_start(args, fmt);
-
-}
-
-int main(void)
-{
-	printf("total is: %d", ft_bzero("333"));
-}
-*/
-
-
-
-
-/*
-1) Escanear el string para definir CANTIDAD de SUBARGUMENTOS
-2) interpretar SUBARG y encontrar el caso correspondiente (%s por ejemplo)
-3) Asignar variable [VAR] a SUBARGUMENTO (punto 2)
-4) Se convierte a STRING (se mallocea y se liberia la memoria luego, creo...)
-
-
-
-Funciones globales extra:
-ft_putchar_fd.c Imprime caracter %c
-ft_putstr_fd.c Imprime string %s
-ft_putnbr_fd.c (creo que se llama asi) Imprime num %d
-ft_itoa.c De int a char %i
-
-	-- hay que hacer:
-  • %p The void * pointer argument has to be printed in hexadecimal format
-  • %u Prints an unsigned decimal (base 10) number
-  • %x Prints a number in hexadecimal (base 16) lowercase format.
-	• %X Prints a number in hexadecimal (base 16) uppercase format.
-	• %% Prints a percent sign.
-
-
-Funciones estaticas extra:
-
-1. Para escanear todos los argumentos. Lleno de if-else
- aca se usa va arg?
- 
- int(?) printarg(va_list arg, char c) //por que seria un int? puede ser otra cosa? por que?
- {
- 	
-  
-    if (c == 'c')
-        ft_putchar_fd();
-    if (c == 's')
-        ft_putstr_fd();
-    if (c == 'd')
-        ft_putnbr_fd();
-    if (c == 'i')
-        ft_itoa();
-    if (c == 'p')
-        ft_putpointer();
-    if (c == 'u')
-        ft_putundec();
-    if (c == 'x')
-        ft_lowhex();
-    if (c == 'X')
-        ft_upphex();
-        
-
- }
-
 */
