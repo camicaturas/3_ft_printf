@@ -6,7 +6,7 @@
 /*   By: cberneri < cberneri@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:32:44 by cberneri          #+#    #+#             */
-/*   Updated: 2023/10/13 14:52:16 by cberneri         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:15:09 by cberneri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	ft_printchar(char c)
 {	
-	write(1, &c, 1);
-	return (c);
+	return (write(1, &c, 1));
 }

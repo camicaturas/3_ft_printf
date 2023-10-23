@@ -6,7 +6,7 @@
 /*   By: cberneri < cberneri@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:14:37 by cberneri          #+#    #+#             */
-/*   Updated: 2023/10/13 14:34:11 by cberneri         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:32:25 by cberneri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 int	ft_printf(const char *str, ...);
 int	ft_printchar(char c);
-//int	ft_printdigit(long n, int base, int uppercase);
-//int	ft_printpointer(unsigned long long ptr);
+int	ft_printdigit(long n, int base, int uppercase);
+int	ft_printptr(unsigned long long ptr);
 int	ft_printstr(char *str);
 
 #endif

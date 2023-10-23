@@ -3,8 +3,8 @@ SOURCES = \
 	ft_printchar.c \
 	ft_printf.c \
 	ft_printstr.c \
-#	ft_printpointer.c \
-#	ft_printdigit.c \
+	ft_printptr.c \
+	ft_printdigit.c \
 	
 OBJECTS = $(SOURCES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
