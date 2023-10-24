@@ -6,7 +6,7 @@
 /*   By: cberneri < cberneri@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:14:37 by cberneri          #+#    #+#             */
-/*   Updated: 2023/10/23 19:27:26 by cberneri         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:53:34 by cberneri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ int	printformat(va_list args, char format)
 	else
 		print_length += write(1, &format, 1);
 	return (print_length);
-
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int i;
-	int charactercount;
+	va_list	args;
+	int		i;
+	int		charactercount;
 
-	i=0;
+	i = 0;
 	charactercount = 0;
 	va_start(args, format);
 	while (format[i] != '\0')
@@ -63,58 +62,69 @@ int ft_printf(const char *format, ...)
 	return (charactercount);
 }
 
-
 /*
 int main(void) {
-	
-// Test 2: Printing integers
+
+
+// Test 1: CHARACTER
+int message = 109;
+
+printf("Standard printf for CHARACTERS (C) : %c\n", message);
+ft_printf("Custom ft_printf for CHARACTERS (C): %c\n\n", message);
+
+
+// Test 2: Printing strings
+char *str = "Hello, world!";
+printf("Standard printf for STRINGS (S) : %s\n", str);
+ft_printf("Custom ft_printf for STRINGS (S): %s\n\n", str);
+
+// Test 3: Printing pointers
 int num = 42;
-	printf("Standard printf: %d\n", num);
-	ft_printf("Custom ft_printf: %d\n", num);
-
-	return (0);
-}
-*/
-//cspdiuxX%
-
-
-/*
-
-// Test 0: CHARACTER
-	char *str = "Hello, world
-	int message = 109;
-
-	ft_printf("%c\n", message);
-	printf("%c\n", message);
-
-// Test 1: Printing strings
-	char *str = "Hello, world!";
-printf("Standard printf: %s\n", str);
-ft_printf("Custom ft_printf: %s\n", str);
-
-// Test 2: Printing integers
-int num = 42;
-printf("Standard printf: %d\n", num);
-//     ft_printf("Custom ft_printf: %d\n", num);
-
- // Test 3: Printing hexadecimal
-int hex = 0x1A3;
-printf("Standard printf: %x\n", hex);
-ft_printf("Custom ft_printf: %x\n", hex);
-
-// Test 4: Printing pointers
 void *ptr = &num;
-printf("Standard printf: %p\n", ptr);
-ft_printf("Custom ft_printf: %p\n", ptr);
+printf("Standard printf for POINTERS (P) : %p\n", ptr);
+ft_printf("Custom ft_printf for POINTERS (P): %p\n\n", ptr);
 
-// Test 5: Printing a mix of formats
-int a = 10, b = 20, c = 30;
-printf("Standard printf: a=%d, b=%d, c=%d\n", a, b, c);
- ft_printf("Custom ft_printf: a=%d, b=%d, c=%d\n", a, b, c);
 
-// Test 6: Printing nulls
+// Test 4: Printing decimals
+int numb= 42;
+printf("Standard printf for DECIMALS (D)  : %d\n", numb);
+ft_printf("Custom ft_printff for DECIMALS (D): %d\n\n", numb);
+
+// Test 5: Printing integers
+int numbe = 662213;
+printf("Standard printf for INTEGERS (I)  : %i\n", numbe);
+ft_printf("Custom ft_printff for INTEGERS (I): %i\n\n", numbe);
+
+// Test 6: Unsigned decimal
+int number = 17812;
+printf("Standard printf for UNSIGNED DECIMALS (U)  : %u\n", number);
+ft_printf("Custom ft_printff for UNSIGNED DECIMALS (U): %u\n\n", number);
+
+ // Test 7: Printing hexadecimal
+int hex = 0x1A3;
+printf("Standard printf for NUMBER IN HEXADECIMAL LOW (x) : %x\n", hex);
+ft_printf("Custom ft_printf for NUMBER IN HEXADECIMAL LOW (x): %x\n\n", hex);
+
+ // Test 8: Printing hexadecimal
+int hexe = 0x1A3;
+printf("Standard printf for NUMBER IN HEXADECIMAL UPP (X) : %X\n", hexe);
+ft_printf("Custom ft_printf for NUMBER IN HEXADECIMAL UPP (X): %X\n\n", hexe);
+
+ // Test 9: Printing Percentage
+printf("Standard printf for PERCENT SIGN (%%) : %%\n");
+ft_printf("Custom ft_printf for PERCENT SIGN (%%): %%\n\n");
+
+// Test 10: Printing a mix of formats
 int a = 10, b = 20, c = 30;
-printf("Standard printf: a=%s, b=%p\n", (char *)NULL, NULL);
-ft_printf("Custom ft_printf: a=%d, b=%d, c=%d\n", a, b, c);
+printf("Standard printf for MIX FORMATS : a=%d, b=%d, c=%d\n", a, b, c);
+ ft_printf("Custom ft_printf for MIX FORMATS: a=%d, b=%d, c=%d\n\n", a, b, c);
+
+// Test 11: Printing nulls
+printf("Standard printf for NULL : a=%s, b=%p\n", (char *)NULL, NULL);
+ft_printf("Custom ft_printf for NULL: a=%s, b=%p\n", (char *)NULL, NULL);
+
+
+return (0);
+}
 
 */

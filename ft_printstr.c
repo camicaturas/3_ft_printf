@@ -6,7 +6,7 @@
 /*   By: cberneri < cberneri@student.42prague.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:32:44 by cberneri          #+#    #+#             */
-/*   Updated: 2023/10/13 14:24:31 by cberneri         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:10:02 by cberneri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	ft_printstr(char *str)
 {
-	int i;
+	int	i;
 
-	i=0;
-	while(str[i] != '\0')
+	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i] != '\0')
 	{
 		write(1, &str[i], 1);
 		i++;
 	}
-	return (0);
+	return (i);
 }
